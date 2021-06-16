@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "timer.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
+# 1 "timer.c" 2
 
 
 
@@ -2499,7 +2499,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
+# 9 "timer.c" 2
 
 # 1 "./config.h" 1
 
@@ -2520,14 +2520,7 @@ extern __bank0 __bit __timeout;
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 10 "main.c" 2
-
-# 1 "./delay.h" 1
-
-
-
-void delay ( unsigned int t );
-# 11 "main.c" 2
+# 10 "timer.c" 2
 
 # 1 "./dispLCD4vias.h" 1
 
@@ -2541,96 +2534,36 @@ void dispLCD( unsigned char lin, unsigned char col, const char * str );
 void dispLCD_num( unsigned char lin, unsigned char col,
                     int num, unsigned char tam );
 void dispLCD_clr( void );
-# 12 "main.c" 2
-
-# 1 "./timer.h" 1
-
+# 11 "timer.c" 2
 
 
 unsigned int contador;
 unsigned int t2seg;
 
-void timer2_init (void);
-
-void __attribute__((picinterrupt(""))) ossada(void);
-# 13 "main.c" 2
-
-
-void main(void)
+void timer2_init (void)
 {
-    int tela = 0;
-    int n = 1;
-    int n_1 = 0;
-    int n_2 = 0;
-
-    dispLCD_init();
-    timer2_init();
-
-    while( 1 )
+    INTCONbits.GIE = 0;
+    T2CONbits.T2CKPS = 00;
+    T2CONbits.TOUTPS = 0000;
+    TMR2 = 256-156;
+    contador = 0;
+    t2seg = 10000;
+    INTCONbits.PEIE = 1;
+    INTCONbits.GIE = 1;
+}
+void __attribute__((picinterrupt(""))) ossada(void)
+{
+    INTCONbits.GIE = 0;
+    if(INTCONbits.PEIE)
     {
-        switch( tela )
+        INTCONbits.PEIE = 0;
+        TMR2 = 256-156;
+        --t2seg;
+        if ( !t2seg)
         {
-            case 0: dispLCD(0,0,"Contador:          ");
-                    tela = 1;
-                    delay(1000);
-                    break;
-
-            case 1: dispLCD(1,0,"    HD44780     ");
-                    tela = 2;
-                    delay(2000);
-                    break;
-
-            case 2: dispLCD_clr();
-                    tela = 3;
-                    delay(500);
-                    break;
-
-            case 3: dispLCD(0,0," dispLCD_init() ");
-                    dispLCD(1,0,"  inicializa    ");
-                    tela = 4;
-                    delay(1000);
-                    break;
-
-            case 4: dispLCD(0,0,"dispLCD(l,c,str)");
-                    dispLCD(1,0,"l: linha        ");
-                    tela = 5;
-                    delay(2000);
-                    break;
-
-            case 5: dispLCD(1,0,"c: coluna       ");
-                    tela = 6;
-                    delay(1000);
-                    break;
-
-            case 6: dispLCD(1,0,"str: string     ");
-                    tela = 10;
-                    delay(1500);
-                    break;
-
-            case 10:
-                    dispLCD(0,0,"  Display LCD   ");
-                    dispLCD(1,0,"GUSTAVO:      ");
-                    n_2 = n_1 = 0;
-                    n = 1;
-                    tela = 11;
-                    break;
-
-            case 11:
-                    n_2 = n_1;
-                    n_1 = n;
-                    n = n_1 + n_2;
-                    if( n < 0 )
-                        tela = 0;
-                    else
-                        tela = 12;
-                    break;
-
-            case 12:
-                    dispLCD_num(1,11, n, 5 );
-                    tela = 11;
-                    delay(1000);
-                    break;
+            t2seg = 10000;
+            ++contador;
         }
-   }
-    return;
+    }
+    INTCONbits.GIE = 1;
 }

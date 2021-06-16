@@ -15,9 +15,9 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"12 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\delay.c
+"12 Z:\projetos programaçao\LCD\LCD16X2.X\delay.c
 [v _delay delay `(v  1 e 1 0 ]
-"74 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\dispLCD4vias.c
+"74 Z:\projetos programaçao\LCD\LCD16X2.X\dispLCD4vias.c
 [v _dispLCD_instReg dispLCD_instReg `(v  1 e 1 0 ]
 "107
 [v _dispLCD_dataReg dispLCD_dataReg `(v  1 e 1 0 ]
@@ -31,9 +31,47 @@
 [v _dispLCD_num dispLCD_num `(v  1 e 1 0 ]
 "204
 [v _dispLCD_clr dispLCD_clr `(v  1 e 1 0 ]
-"14 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\main.c
+"15 Z:\projetos programaçao\LCD\LCD16X2.X\main.c
 [v _main main `(v  1 e 1 0 ]
-[s S82 . 1 `uc 1 TRISD0 1 0 :1:0 
+"16 Z:\projetos programaçao\LCD\LCD16X2.X\timer.c
+[v _timer2_init timer2_init `(v  1 e 1 0 ]
+"27
+[v _ossada ossada `II(v  1 e 1 0 ]
+[s S156 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"482 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
+[s S165 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S170 . 1 `S156 1 . 1 0 `S165 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES170  1 e 1 @11 ]
+"765
+[v _TMR2 TMR2 `VEuc  1 e 1 @17 ]
+[s S188 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+"793
+[s S192 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S200 . 1 `S188 1 . 1 0 `S192 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES200  1 e 1 @18 ]
+[s S88 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -42,75 +80,84 @@
 `uc 1 TRISD6 1 0 :1:6 
 `uc 1 TRISD7 1 0 :1:7 
 ]
-"1619 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
-[u S91 . 1 `S82 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES91  1 e 1 @136 ]
-[s S69 . 1 `uc 1 . 1 0 :2:0 
+"1619
+[u S97 . 1 `S88 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES97  1 e 1 @136 ]
+[s S75 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RS 1 0 :1:2 
 `uc 1 EN 1 0 :1:3 
 `uc 1 BUS 1 0 :4:4 
 ]
-"31 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\dispLCD4vias.c
-[u S74 . 1 `S69 1 . 1 0 ]
-[v _LCDbits LCDbits `VES74  1 e 1 @8 ]
-"14 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\main.c
+"31 Z:\projetos programaçao\LCD\LCD16X2.X\dispLCD4vias.c
+[u S80 . 1 `S75 1 . 1 0 ]
+[v _LCDbits LCDbits `VES80  1 e 1 @8 ]
+"13 Z:\projetos programaçao\LCD\LCD16X2.X\timer.c
+[v _contador contador `ui  1 e 2 0 ]
+"14
+[v _t2seg t2seg `ui  1 e 2 0 ]
+"15 Z:\projetos programaçao\LCD\LCD16X2.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"16
-[v main@tela tela `i  1 a 2 16 ]
 "17
-[v main@n n `i  1 a 2 14 ]
+[v main@tela tela `i  1 a 2 24 ]
 "18
-[v main@n_1 n_1 `i  1 a 2 12 ]
+[v main@n n `i  1 a 2 22 ]
 "19
-[v main@n_2 n_2 `i  1 a 2 10 ]
-"90
+[v main@n_1 n_1 `i  1 a 2 20 ]
+"20
+[v main@n_2 n_2 `i  1 a 2 18 ]
+"92
 } 0
-"161 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\dispLCD4vias.c
+"16 Z:\projetos programaçao\LCD\LCD16X2.X\timer.c
+[v _timer2_init timer2_init `(v  1 e 1 0 ]
+{
+"26
+} 0
+"161 Z:\projetos programaçao\LCD\LCD16X2.X\dispLCD4vias.c
 [v _dispLCD_num dispLCD_num `(v  1 e 1 0 ]
 {
 [v dispLCD_num@lin lin `uc  1 a 1 wreg ]
 "164
-[v dispLCD_num@div div `i  1 a 2 6 ]
+[v dispLCD_num@div div `i  1 a 2 14 ]
 "166
-[v dispLCD_num@sinal sinal `uc  1 a 1 5 ]
+[v dispLCD_num@sinal sinal `uc  1 a 1 13 ]
 "165
-[v dispLCD_num@size size `uc  1 a 1 4 ]
+[v dispLCD_num@size size `uc  1 a 1 12 ]
 "161
 [v dispLCD_num@lin lin `uc  1 a 1 wreg ]
-[v dispLCD_num@col col `uc  1 p 1 9 ]
+[v dispLCD_num@col col `uc  1 p 1 4 ]
 "162
-[v dispLCD_num@num num `i  1 p 2 10 ]
-[v dispLCD_num@tam tam `uc  1 p 1 12 ]
+[v dispLCD_num@num num `i  1 p 2 5 ]
+[v dispLCD_num@tam tam `uc  1 p 1 7 ]
 "168
-[v dispLCD_num@lin lin `uc  1 a 1 3 ]
+[v dispLCD_num@lin lin `uc  1 a 1 11 ]
 "201
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "10
-[v ___awmod@sign sign `uc  1 a 1 6 ]
-[v ___awmod@counter counter `uc  1 a 1 5 ]
+[v ___awmod@sign sign `uc  1 a 1 8 ]
+[v ___awmod@counter counter `uc  1 a 1 7 ]
 "5
-[v ___awmod@divisor divisor `i  1 p 2 0 ]
-[v ___awmod@dividend dividend `i  1 p 2 2 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+[v ___awmod@dividend dividend `i  1 p 2 4 ]
 "34
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+[v ___awdiv@quotient quotient `i  1 a 2 2 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 6 ]
-[v ___awdiv@counter counter `uc  1 a 1 5 ]
+[v ___awdiv@sign sign `uc  1 a 1 1 ]
+[v ___awdiv@counter counter `uc  1 a 1 0 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 0 ]
-[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+[v ___awdiv@dividend dividend `i  1 p 2 4 ]
 "41
 } 0
-"129 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\dispLCD4vias.c
+"129 Z:\projetos programaçao\LCD\LCD16X2.X\dispLCD4vias.c
 [v _dispLCD_init dispLCD_init `(v  1 e 1 0 ]
 {
 "144
@@ -125,13 +172,13 @@
 {
 [v dispLCD@lin lin `uc  1 a 1 wreg ]
 "149
-[v dispLCD@pos pos `uc  1 a 1 9 ]
+[v dispLCD@pos pos `uc  1 a 1 1 ]
 "147
 [v dispLCD@lin lin `uc  1 a 1 wreg ]
-[v dispLCD@col col `uc  1 p 1 6 ]
-[v dispLCD@str str `*.24DCuc  1 p 1 7 ]
+[v dispLCD@col col `uc  1 p 1 8 ]
+[v dispLCD@str str `*.24DCuc  1 p 1 9 ]
 "149
-[v dispLCD@lin lin `uc  1 a 1 10 ]
+[v dispLCD@lin lin `uc  1 a 1 2 ]
 "158
 } 0
 "123
@@ -139,9 +186,9 @@
 {
 [v dispLCD_lincol@lin lin `uc  1 a 1 wreg ]
 [v dispLCD_lincol@lin lin `uc  1 a 1 wreg ]
-[v dispLCD_lincol@col col `uc  1 p 1 3 ]
+[v dispLCD_lincol@col col `uc  1 p 1 5 ]
 "125
-[v dispLCD_lincol@lin lin `uc  1 a 1 5 ]
+[v dispLCD_lincol@lin lin `uc  1 a 1 7 ]
 "126
 } 0
 "74
@@ -150,7 +197,7 @@
 [v dispLCD_instReg@i i `uc  1 a 1 wreg ]
 [v dispLCD_instReg@i i `uc  1 a 1 wreg ]
 "76
-[v dispLCD_instReg@i i `uc  1 a 1 2 ]
+[v dispLCD_instReg@i i `uc  1 a 1 4 ]
 "104
 } 0
 "107
@@ -159,12 +206,17 @@
 [v dispLCD_dataReg@d d `uc  1 a 1 wreg ]
 [v dispLCD_dataReg@d d `uc  1 a 1 wreg ]
 "109
-[v dispLCD_dataReg@d d `uc  1 a 1 2 ]
+[v dispLCD_dataReg@d d `uc  1 a 1 4 ]
 "120
 } 0
-"12 C:\Users\20185147\MPLABXProjects\LCD\LCD16X2.X\delay.c
+"12 Z:\projetos programaçao\LCD\LCD16X2.X\delay.c
 [v _delay delay `(v  1 e 1 0 ]
 {
-[v delay@t t `ui  1 p 2 0 ]
+[v delay@t t `ui  1 p 2 2 ]
 "19
+} 0
+"27 Z:\projetos programaçao\LCD\LCD16X2.X\timer.c
+[v _ossada ossada `II(v  1 e 1 0 ]
+{
+"42
 } 0

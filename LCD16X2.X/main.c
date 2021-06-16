@@ -10,6 +10,7 @@
 #include "config.h"
 #include "delay.h"
 #include "dispLCD4vias.h"
+#include "timer.h"
 
 void main(void)
 {
@@ -19,12 +20,13 @@ void main(void)
     int n_2 = 0;
     
     dispLCD_init();
-
+    timer2_init();
+    
     while( 1 )
     {
         switch( tela )
         {
-            case 0: dispLCD(0,0," Display LCD 4b "); 
+            case 0: dispLCD(0,0,"Contador:          ");
                     tela = 1;
                     delay(1000);
                     break;
@@ -63,7 +65,7 @@ void main(void)
                     
             case 10:
                     dispLCD(0,0,"  Display LCD   "); 
-                    dispLCD(1,0,"Fibonacci:      ");
+                    dispLCD(1,0,"GUSTAVO:      ");
                     n_2 = n_1 = 0;
                     n = 1;
                     tela = 11;
