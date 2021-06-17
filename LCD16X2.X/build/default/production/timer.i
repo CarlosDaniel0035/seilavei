@@ -2536,34 +2536,55 @@ void dispLCD_num( unsigned char lin, unsigned char col,
 void dispLCD_clr( void );
 # 11 "timer.c" 2
 
+# 1 "./delay.h" 1
+
+
+
+void delay ( unsigned int t );
+# 12 "timer.c" 2
+
 
 unsigned int contador;
 unsigned int t2seg;
+unsigned int contador2;
 
 void timer2_init (void)
 {
     INTCONbits.GIE = 0;
-    T2CONbits.T2CKPS = 00;
-    T2CONbits.TOUTPS = 0000;
-    TMR2 = 256-156;
+    T2CONbits.T2CKPS = 0;
+    T2CONbits.TOUTPS = 0;
+    TMR2 = 0;
+    PR2 = 100;
     contador = 0;
-    t2seg = 10000;
+    t2seg = 1;
+    contador2 = 0;
+    T2CONbits.TMR2ON = 1;
     INTCONbits.PEIE = 1;
+    PIE1bits.TMR2IE = 1;
     INTCONbits.GIE = 1;
 }
-void __attribute__((picinterrupt(""))) ossada(void)
+
+
+void __attribute__((picinterrupt(""))) ossada (void)
 {
+
     INTCONbits.GIE = 0;
-    if(INTCONbits.PEIE)
+    if (PIR1bits.TMR2IF)
     {
-        INTCONbits.PEIE = 0;
-        TMR2 = 256-156;
-        --t2seg;
-        if ( !t2seg)
-        {
-            t2seg = 10000;
-            ++contador;
-        }
+        PIR1bits.TMR2IF=0;
+        t2seg++;
+    if(!t2seg)
+    {
+        contador++;
+        t2seg = 10000;
     }
-    INTCONbits.GIE = 1;
+        {
+            if(contador ==11)
+            {
+                contador2++;
+                contador = 0;
+            }
+            }
+   }
+    INTCONbits.GIE= 1;
 }

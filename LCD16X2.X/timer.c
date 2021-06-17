@@ -13,7 +13,7 @@
 
 unsigned int contador;
 unsigned int t2seg;
-
+unsigned int contador2;
 
 void timer2_init (void)
 {
@@ -24,6 +24,7 @@ void timer2_init (void)
     PR2 = 100;
     contador = 0;
     t2seg = 1;
+    contador2 = 0;
     T2CONbits.TMR2ON = 1; // Liga o timer2
     INTCONbits.PEIE = 1; // liga perifericos 
     PIE1bits.TMR2IE = 1; // interrompe o PR2
@@ -44,6 +45,13 @@ void __interrupt() ossada (void)
         contador++;
         t2seg = 10000;
     }
+        {
+            if(contador ==11)
+            {
+                contador2++;
+                contador = 0; 
+            }    
+            }
    } 
     INTCONbits.GIE= 1;
 }

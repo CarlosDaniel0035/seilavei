@@ -14,6 +14,6 @@ void delay ( unsigned int t )
     while ( t )
     {
         --t;
-        __delay_ms(1); 
+        __delay_us(1); 
     }
 }

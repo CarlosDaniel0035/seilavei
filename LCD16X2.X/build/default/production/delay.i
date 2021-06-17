@@ -2528,6 +2528,6 @@ void delay ( unsigned int t )
     while ( t )
     {
         --t;
-        _delay((unsigned long)((1)*(4000000/4000.0)));
+        _delay((unsigned long)((1)*(4000000/4000000.0)));
     }
 }

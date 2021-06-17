@@ -285,8 +285,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;delay.c: 16:         --t;
 [e =- _t -> -> 1 `i `ui ]
 "17
-[; ;delay.c: 17:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;delay.c: 17:         _delay((unsigned long)((1)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
 "18
 [; ;delay.c: 18:     }
 }

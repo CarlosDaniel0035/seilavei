@@ -1,1 +1,2 @@
-build/default/production\timer.p1: timer.c config.h dispLCD4vias.h
+build/default/production\timer.p1: timer.c config.h dispLCD4vias.h \
+  delay.h

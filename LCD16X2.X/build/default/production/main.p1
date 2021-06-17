@@ -3,18 +3,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7 ./dispLCD4vias.h
 [; ;./dispLCD4vias.h: 7: void dispLCD_init( void );
 [v _dispLCD_init `(v ~T0 @X0 0 ef ]
-"7 ./timer.h
-[; ;./timer.h: 7: void timer2_init (void);
+"8 ./timer.h
+[; ;./timer.h: 8: void timer2_init (void);
 [v _timer2_init `(v ~T0 @X0 0 ef ]
 "8 ./dispLCD4vias.h
 [; ;./dispLCD4vias.h: 8: void dispLCD( unsigned char lin, unsigned char col, const char * str );
 [v _dispLCD `(v ~T0 @X0 0 ef3`uc`uc`*Cuc ]
-"4 ./delay.h
-[; ;./delay.h: 4: void delay ( unsigned int t );
-[v _delay `(v ~T0 @X0 0 ef1`ui ]
-"11 ./dispLCD4vias.h
-[; ;./dispLCD4vias.h: 11: void dispLCD_clr( void );
-[v _dispLCD_clr `(v ~T0 @X0 0 ef ]
 "9
 [; ;./dispLCD4vias.h: 9: void dispLCD_num( unsigned char lin, unsigned char col,
 [v _dispLCD_num `(v ~T0 @X0 0 ef4`uc`uc`i`uc ]
@@ -277,10 +271,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "18
 [p x WRT = OFF ]
 "4 ./timer.h
-[; ;./timer.h: 4: unsigned int contador;
-[v _contador `ui ~T0 @X0 1 e ]
+[; ;./timer.h: 4: unsigned int contador2;
+[v _contador2 `ui ~T0 @X0 1 e ]
 "5
-[; ;./timer.h: 5: unsigned int t2seg;
+[; ;./timer.h: 5: unsigned int contador;
+[v _contador `ui ~T0 @X0 1 e ]
+"6
+[; ;./timer.h: 6: unsigned int t2seg;
 [v _t2seg `ui ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "15 main.c
@@ -292,238 +289,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "17
-[; ;main.c: 17:     int tela = 0;
-[v _tela `i ~T0 @X0 1 a ]
-[e = _tela -> 0 `i ]
-"18
-[; ;main.c: 18:     int n = 1;
-[v _n `i ~T0 @X0 1 a ]
-[e = _n -> 1 `i ]
-"19
-[; ;main.c: 19:     int n_1 = 0;
-[v _n_1 `i ~T0 @X0 1 a ]
-[e = _n_1 -> 0 `i ]
-"20
-[; ;main.c: 20:     int n_2 = 0;
-[v _n_2 `i ~T0 @X0 1 a ]
-[e = _n_2 -> 0 `i ]
-"22
-[; ;main.c: 22:     dispLCD_init();
+[; ;main.c: 17:     dispLCD_init();
 [e ( _dispLCD_init ..  ]
-"23
-[; ;main.c: 23:     timer2_init();
+"18
+[; ;main.c: 18:     timer2_init();
 [e ( _timer2_init ..  ]
-"25
-[; ;main.c: 25:     while( 1 )
-[e :U 140 ]
-"26
-[; ;main.c: 26:     {
-{
-"27
-[; ;main.c: 27:         switch( tela )
-[e $U 143  ]
-"28
-[; ;main.c: 28:         {
-{
-"29
-[; ;main.c: 29:             case 0: dispLCD(0,0,"Contador:          ");
-[e :U 144 ]
+"20
+[; ;main.c: 20:     dispLCD(0,0,"Contador:        ");
 [e ( _dispLCD (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 1C ]
-"30
-[; ;main.c: 30:                     tela = 1;
-[e = _tela -> 1 `i ]
-"31
-[; ;main.c: 31:                     delay(1000);
-[e ( _delay (1 -> -> 1000 `i `ui ]
-"32
-[; ;main.c: 32:                     break;
-[e $U 142  ]
-"34
-[; ;main.c: 34:             case 1: dispLCD(1,0,"    HD44780     ");
-[e :U 145 ]
-[e ( _dispLCD (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 2C ]
-"35
-[; ;main.c: 35:                     tela = 2;
-[e = _tela -> 2 `i ]
-"36
-[; ;main.c: 36:                     delay(2000);
-[e ( _delay (1 -> -> 2000 `i `ui ]
-"37
-[; ;main.c: 37:                     break;
-[e $U 142  ]
-"39
-[; ;main.c: 39:             case 2: dispLCD_clr();
-[e :U 146 ]
-[e ( _dispLCD_clr ..  ]
-"40
-[; ;main.c: 40:                     tela = 3;
-[e = _tela -> 3 `i ]
-"41
-[; ;main.c: 41:                     delay(500);
-[e ( _delay (1 -> -> 500 `i `ui ]
-"42
-[; ;main.c: 42:                     break;
-[e $U 142  ]
-"44
-[; ;main.c: 44:             case 3: dispLCD(0,0," dispLCD_init() ");
-[e :U 147 ]
-[e ( _dispLCD (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 3C ]
-"45
-[; ;main.c: 45:                     dispLCD(1,0,"  inicializa    ");
-[e ( _dispLCD (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 4C ]
-"46
-[; ;main.c: 46:                     tela = 4;
-[e = _tela -> 4 `i ]
-"47
-[; ;main.c: 47:                     delay(1000);
-[e ( _delay (1 -> -> 1000 `i `ui ]
-"48
-[; ;main.c: 48:                     break;
-[e $U 142  ]
-"50
-[; ;main.c: 50:             case 4: dispLCD(0,0,"dispLCD(l,c,str)");
-[e :U 148 ]
-[e ( _dispLCD (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 5C ]
-"51
-[; ;main.c: 51:                     dispLCD(1,0,"l: linha        ");
-[e ( _dispLCD (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 6C ]
-"52
-[; ;main.c: 52:                     tela = 5;
-[e = _tela -> 5 `i ]
-"53
-[; ;main.c: 53:                     delay(2000);
-[e ( _delay (1 -> -> 2000 `i `ui ]
-"54
-[; ;main.c: 54:                     break;
-[e $U 142  ]
-"56
-[; ;main.c: 56:             case 5: dispLCD(1,0,"c: coluna       ");
-[e :U 149 ]
-[e ( _dispLCD (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 7C ]
-"57
-[; ;main.c: 57:                     tela = 6;
-[e = _tela -> 6 `i ]
-"58
-[; ;main.c: 58:                     delay(1000);
-[e ( _delay (1 -> -> 1000 `i `ui ]
-"59
-[; ;main.c: 59:                     break;
-[e $U 142  ]
-"61
-[; ;main.c: 61:             case 6: dispLCD(1,0,"str: string     ");
-[e :U 150 ]
-[e ( _dispLCD (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 8C ]
-"62
-[; ;main.c: 62:                     tela = 10;
-[e = _tela -> 10 `i ]
-"63
-[; ;main.c: 63:                     delay(1500);
-[e ( _delay (1 -> -> 1500 `i `ui ]
-"64
-[; ;main.c: 64:                     break;
-[e $U 142  ]
-"66
-[; ;main.c: 66:             case 10:
-[e :U 151 ]
-"67
-[; ;main.c: 67:                     dispLCD(0,0,"  Display LCD   ");
-[e ( _dispLCD (3 , , -> -> 0 `i `uc -> -> 0 `i `uc :s 9C ]
-"68
-[; ;main.c: 68:                     dispLCD(1,0,"GUSTAVO:      ");
-[e ( _dispLCD (3 , , -> -> 1 `i `uc -> -> 0 `i `uc :s 10C ]
-"69
-[; ;main.c: 69:                     n_2 = n_1 = 0;
-[e = _n_2 = _n_1 -> 0 `i ]
-"70
-[; ;main.c: 70:                     n = 1;
-[e = _n -> 1 `i ]
-"71
-[; ;main.c: 71:                     tela = 11;
-[e = _tela -> 11 `i ]
-"72
-[; ;main.c: 72:                     break;
-[e $U 142  ]
-"74
-[; ;main.c: 74:             case 11:
-[e :U 152 ]
-"75
-[; ;main.c: 75:                     n_2 = n_1;
-[e = _n_2 _n_1 ]
-"76
-[; ;main.c: 76:                     n_1 = n;
-[e = _n_1 _n ]
-"77
-[; ;main.c: 77:                     n = n_1 + n_2;
-[e = _n + _n_1 _n_2 ]
-"78
-[; ;main.c: 78:                     if( n < 0 )
-[e $ ! < _n -> 0 `i 153  ]
-"79
-[; ;main.c: 79:                         tela = 0;
-[e = _tela -> 0 `i ]
-[e $U 154  ]
-"80
-[; ;main.c: 80:                     else
-[e :U 153 ]
-"81
-[; ;main.c: 81:                         tela = 12;
-[e = _tela -> 12 `i ]
-[e :U 154 ]
-"82
-[; ;main.c: 82:                     break;
-[e $U 142  ]
-"84
-[; ;main.c: 84:             case 12:
-[e :U 155 ]
-"85
-[; ;main.c: 85:                     dispLCD_num(1,11, n, 5 );
-[e ( _dispLCD_num (4 , , , -> -> 1 `i `uc -> -> 11 `i `uc _n -> -> 5 `i `uc ]
-"86
-[; ;main.c: 86:                     tela = 11;
-[e = _tela -> 11 `i ]
-"87
-[; ;main.c: 87:                     delay(1000);
-[e ( _delay (1 -> -> 1000 `i `ui ]
-"88
-[; ;main.c: 88:                     break;
-[e $U 142  ]
-"89
-[; ;main.c: 89:         }
-}
-[e $U 142  ]
-[e :U 143 ]
-[e [\ _tela , $ -> 0 `i 144
- , $ -> 1 `i 145
- , $ -> 2 `i 146
- , $ -> 3 `i 147
- , $ -> 4 `i 148
- , $ -> 5 `i 149
- , $ -> 6 `i 150
- , $ -> 10 `i 151
- , $ -> 11 `i 152
- , $ -> 12 `i 155
- 142 ]
-[e :U 142 ]
-"90
-[; ;main.c: 90:    }
+"21
+[; ;main.c: 21:     while( 1 )
+[e :U 140 ]
+"22
+[; ;main.c: 22:     {
+{
+"23
+[; ;main.c: 23:         dispLCD_num(0,9, contador, 5);
+[e ( _dispLCD_num (4 , , , -> -> 0 `i `uc -> -> 9 `i `uc -> _contador `i -> -> 5 `i `uc ]
+"24
+[; ;main.c: 24:         dispLCD_num(1,9,contador2,5);
+[e ( _dispLCD_num (4 , , , -> -> 1 `i `uc -> -> 9 `i `uc -> _contador2 `i -> -> 5 `i `uc ]
+"25
+[; ;main.c: 25:     }
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"91
-[; ;main.c: 91:     return;
-[e $UE 138  ]
-"92
-[; ;main.c: 92: }
+"28
+[; ;main.c: 28: }
 [e :UE 138 ]
 }
-[a 5C 100 105 115 112 76 67 68 40 108 44 99 44 115 116 114 41 0 ]
-[a 3C 32 100 105 115 112 76 67 68 95 105 110 105 116 40 41 32 0 ]
-[a 9C 32 32 68 105 115 112 108 97 121 32 76 67 68 32 32 32 0 ]
-[a 4C 32 32 105 110 105 99 105 97 108 105 122 97 32 32 32 32 0 ]
-[a 8C 115 116 114 58 32 115 116 114 105 110 103 32 32 32 32 32 0 ]
-[a 2C 32 32 32 32 72 68 52 52 55 56 48 32 32 32 32 32 0 ]
-[a 10C 71 85 83 84 65 86 79 58 32 32 32 32 32 32 0 ]
-[a 7C 99 58 32 99 111 108 117 110 97 32 32 32 32 32 32 32 0 ]
-[a 6C 108 58 32 108 105 110 104 97 32 32 32 32 32 32 32 32 0 ]
-[a 1C 67 111 110 116 97 100 111 114 58 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 1C 67 111 110 116 97 100 111 114 58 32 32 32 32 32 32 32 32 0 ]

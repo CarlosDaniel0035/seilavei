@@ -32,8 +32,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 "765
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 765: extern volatile unsigned char TMR2 __attribute__((address(0x011)));
 [v _TMR2 `Vuc ~T0 @X0 0 e@17 ]
+"2041
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 2041: extern volatile unsigned char PR2 __attribute__((address(0x092)));
+[v _PR2 `Vuc ~T0 @X0 0 e@146 ]
+"1708
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 1708:     struct {
+[s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S63 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE ]
+"1707
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 1707: typedef union {
+[u S62 `S63 1 ]
+[n S62 . . ]
+"1718
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 1718: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x08C)));
+[v _PIE1bits `VS62 ~T0 @X0 0 e@140 ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
+"543
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f887.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -292,99 +317,133 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x BOR4V = BOR40V ]
 "18
 [p x WRT = OFF ]
-"13 timer.c
-[; ;timer.c: 13: unsigned int contador;
+"14 timer.c
+[; ;timer.c: 14: unsigned int contador;
 [v _contador `ui ~T0 @X0 1 e ]
-"14
-[; ;timer.c: 14: unsigned int t2seg;
+"15
+[; ;timer.c: 15: unsigned int t2seg;
 [v _t2seg `ui ~T0 @X0 1 e ]
 "16
-[; ;timer.c: 16: void timer2_init (void)
+[; ;timer.c: 16: unsigned int contador2;
+[v _contador2 `ui ~T0 @X0 1 e ]
+"18
+[; ;timer.c: 18: void timer2_init (void)
 [v _timer2_init `(v ~T0 @X0 1 ef ]
-"17
-[; ;timer.c: 17: {
+"19
+[; ;timer.c: 19: {
 {
 [e :U _timer2_init ]
 [f ]
-"18
-[; ;timer.c: 18:     INTCONbits.GIE = 0;
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"19
-[; ;timer.c: 19:     T2CONbits.T2CKPS = 00;
-[e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
 "20
-[; ;timer.c: 20:     T2CONbits.TOUTPS = 0000;
-[e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
+[; ;timer.c: 20:     INTCONbits.GIE = 0;
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
 "21
-[; ;timer.c: 21:     TMR2 = 256-156;
-[e = _TMR2 -> - -> 256 `i -> 156 `i `uc ]
+[; ;timer.c: 21:     T2CONbits.T2CKPS = 0;
+[e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
 "22
-[; ;timer.c: 22:     contador = 0;
-[e = _contador -> -> 0 `i `ui ]
+[; ;timer.c: 22:     T2CONbits.TOUTPS = 0;
+[e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
 "23
-[; ;timer.c: 23:     t2seg = 10000;
-[e = _t2seg -> -> 10000 `i `ui ]
+[; ;timer.c: 23:     TMR2 = 0;
+[e = _TMR2 -> -> 0 `i `uc ]
 "24
-[; ;timer.c: 24:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;timer.c: 24:     PR2 = 100;
+[e = _PR2 -> -> 100 `i `uc ]
 "25
-[; ;timer.c: 25:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;timer.c: 25:     contador = 0;
+[e = _contador -> -> 0 `i `ui ]
 "26
-[; ;timer.c: 26: }
+[; ;timer.c: 26:     t2seg = 1;
+[e = _t2seg -> -> 1 `i `ui ]
+"27
+[; ;timer.c: 27:     contador2 = 0;
+[e = _contador2 -> -> 0 `i `ui ]
+"28
+[; ;timer.c: 28:     T2CONbits.TMR2ON = 1;
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+"29
+[; ;timer.c: 29:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"30
+[; ;timer.c: 30:     PIE1bits.TMR2IE = 1;
+[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
+"31
+[; ;timer.c: 31:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"32
+[; ;timer.c: 32: }
 [e :UE 138 ]
 }
 [v $root$_ossada `(v ~T0 @X0 0 e ]
-"27
-[; ;timer.c: 27: void __attribute__((picinterrupt(""))) ossada(void)
+"35
+[; ;timer.c: 35: void __attribute__((picinterrupt(""))) ossada (void)
 [v _ossada `(v ~T1 @X0 1 ef ]
-"28
-[; ;timer.c: 28: {
+"36
+[; ;timer.c: 36: {
 {
 [e :U _ossada ]
 [f ]
-"29
-[; ;timer.c: 29:     INTCONbits.GIE = 0;
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"30
-[; ;timer.c: 30:     if(INTCONbits.PEIE)
-[e $ ! != -> . . _INTCONbits 0 6 `i -> 0 `i 140  ]
-"31
-[; ;timer.c: 31:     {
-{
-"32
-[; ;timer.c: 32:         INTCONbits.PEIE = 0;
-[e = . . _INTCONbits 0 6 -> -> 0 `i `uc ]
-"33
-[; ;timer.c: 33:         TMR2 = 256-156;
-[e = _TMR2 -> - -> 256 `i -> 156 `i `uc ]
-"34
-[; ;timer.c: 34:         --t2seg;
-[e =- _t2seg -> -> 1 `i `ui ]
-"35
-[; ;timer.c: 35:         if ( !t2seg)
-[e $ ! ! != _t2seg -> -> 0 `i `ui 141  ]
-"36
-[; ;timer.c: 36:         {
-{
-"37
-[; ;timer.c: 37:             t2seg = 10000;
-[e = _t2seg -> -> 10000 `i `ui ]
 "38
-[; ;timer.c: 38:             ++contador;
-[e =+ _contador -> -> 1 `i `ui ]
+[; ;timer.c: 38:     INTCONbits.GIE = 0;
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
 "39
-[; ;timer.c: 39:         }
+[; ;timer.c: 39:     if (PIR1bits.TMR2IF)
+[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 140  ]
+"40
+[; ;timer.c: 40:     {
+{
+"41
+[; ;timer.c: 41:         PIR1bits.TMR2IF=0;
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+"42
+[; ;timer.c: 42:         t2seg++;
+[e ++ _t2seg -> -> 1 `i `ui ]
+"43
+[; ;timer.c: 43:     if(!t2seg)
+[e $ ! ! != _t2seg -> -> 0 `i `ui 141  ]
+"44
+[; ;timer.c: 44:     {
+{
+"45
+[; ;timer.c: 45:         contador++;
+[e ++ _contador -> -> 1 `i `ui ]
+"46
+[; ;timer.c: 46:         t2seg = 10000;
+[e = _t2seg -> -> 10000 `i `ui ]
+"47
+[; ;timer.c: 47:     }
 }
 [e :U 141 ]
-"40
-[; ;timer.c: 40:     }
+"48
+[; ;timer.c: 48:         {
+{
+"49
+[; ;timer.c: 49:             if(contador ==11)
+[e $ ! == _contador -> -> 11 `i `ui 142  ]
+"50
+[; ;timer.c: 50:             {
+{
+"51
+[; ;timer.c: 51:                 contador2++;
+[e ++ _contador2 -> -> 1 `i `ui ]
+"52
+[; ;timer.c: 52:                 contador = 0;
+[e = _contador -> -> 0 `i `ui ]
+"53
+[; ;timer.c: 53:             }
+}
+[e :U 142 ]
+"54
+[; ;timer.c: 54:             }
+}
+"55
+[; ;timer.c: 55:    }
 }
 [e :U 140 ]
-"41
-[; ;timer.c: 41:     INTCONbits.GIE = 1;
+"56
+[; ;timer.c: 56:     INTCONbits.GIE= 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"42
-[; ;timer.c: 42: }
+"57
+[; ;timer.c: 57: }
 [e :UE 139 ]
 }
