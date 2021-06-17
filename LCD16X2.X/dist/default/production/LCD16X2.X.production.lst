@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V2.00 build -1524193055 
-                                                                                               Thu Jun 17 15:19:20 2021
+                                                                                               Thu Jun 17 15:26:51 2021
 
 Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
      1  0000                     
@@ -1030,7 +1030,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    967                           __CFG_BOR4V$BOR40V equ 0x0
    968  0000                     global __CFG_WRT$OFF
    969                           __CFG_WRT$OFF equ 0x0
-   970  0000                     	file	"C:\Users\20185070\AppData\Local\Temp\s9mk."
+   970  0000                     	file	"C:\Users\20185070\AppData\Local\Temp\s3mo."
    971                           	line	#
    972                           psect cinit,class=CODE,delta=2
    973                           global start_initialization
@@ -1053,7 +1053,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
    990                           _contador2:
    991  0034                            ds      2
    992  0034                     
-   993                           	file	"C:\Users\20185070\AppData\Local\Temp\s9mk."
+   993                           	file	"C:\Users\20185070\AppData\Local\Temp\s3mo."
    994                           	line	#
    995                           ; Clear objects allocated to COMMON
    996                           psect cinit,class=CODE,delta=2,merge=1
@@ -3705,7 +3705,7 @@ DATA                 0      0      22      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.00 build -1524193055 
-Symbol Table                                                                                   Thu Jun 17 15:19:20 2021
+Symbol Table                                                                                   Thu Jun 17 15:26:51 2021
 
                        pc 0002               __CFG_CP$OFF 0000                        l20 02A0  
                       l21 02A1                        l22 02A1                        l31 0134  
